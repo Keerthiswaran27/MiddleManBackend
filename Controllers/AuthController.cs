@@ -17,15 +17,14 @@ namespace BlogApp1.Server.Controllers
     {
         private readonly Supabase.Client _supabase;
 
-        public AuthController()
+        public AuthController(IConfiguration config)
         {
             var options = new SupabaseOptions { AutoConnectRealtime = false };
 
-            // ⛳ REPLACE with your actual Supabase URL and Anon Key
-            _supabase = new Supabase.Client(
-                "https://baynmesisxklgmqerbbo.supabase.co",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJheW5tZXNpc3hrbGdtcWVyYmJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDczMDcxMjAsImV4cCI6MjA2Mjg4MzEyMH0.3AouI9q_9KzfiVxKu_zJzgyd_HEfL6RUaiJ6mE777v4",
-                options);
+            var supabaseUrl = config["Supabase:Url"];
+            var supabaseKey = config["Supabase:Key"];
+
+            _supabase = new Supabase.Client(supabaseUrl, supabaseKey);
         }
 
         [HttpPost("signup")]

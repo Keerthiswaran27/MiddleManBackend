@@ -12,11 +12,12 @@ namespace BlogApp1.Server.Controllers
     public class GeminiController : ControllerBase
     {
         private readonly HttpClient _httpClient;
-        private readonly string _apiKey = "AIzaSyAo_gMm1nbZbuGdYRlhVkBx4VM8poI4Z0Q";
+        private readonly string _apiKey = "";
 
-        public GeminiController(HttpClient httpClient)
+        public GeminiController(HttpClient httpClient, IConfiguration config)
         {
             _httpClient = httpClient;
+            _apiKey = config["Gemini:ApiKey"] ?? throw new ArgumentNullException("Missing Gemini:ApiKey");
         }
 
         [HttpPost("generate")]
