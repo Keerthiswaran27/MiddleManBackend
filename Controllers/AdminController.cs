@@ -22,7 +22,7 @@ namespace BlogApp1.Server.Controllers
             _supabase.InitializeAsync().Wait(); // Initialize once
         }
 
-        // ✅ GET: api/admin
+        // GET: api/admin
         [HttpGet]
         public async Task<ActionResult<List<BlogUserDto>>> GetAllUsers()
         {
@@ -52,7 +52,7 @@ namespace BlogApp1.Server.Controllers
             return Ok(users);
         }
 
-        // ✅ GET: api/admin/getuser/{id}
+        // GET: api/admin/getuser/{id}
         [HttpGet("getuser/{id}")]
         public async Task<ActionResult<BlogUserDto>> GetUserById(Guid id)
         {
@@ -101,7 +101,7 @@ namespace BlogApp1.Server.Controllers
             return Ok(dto);
         }
 
-        // ✅ PUT: api/admin/updateuser/{id}
+        //  PUT: api/admin/updateuser/{id}
         [HttpPut("updateuser")]
         public async Task<IActionResult> UpdateUser([FromBody] BlogUserDto updatedUser)
         {
@@ -148,7 +148,7 @@ namespace BlogApp1.Server.Controllers
         }
 
 
-        // ✅ DELETE: api/admin/deleteuser/{id}
+        // DELETE: api/admin/deleteuser/{id}
         [HttpDelete("deleteuser/{id}")]
         public async Task<IActionResult> DeleteUser(Guid id)
         {
@@ -167,7 +167,7 @@ namespace BlogApp1.Server.Controllers
 
             return NoContent();
         }
-        // ✅ POST: api/admin/getfollowers
+        // POST: api/admin/getfollowers
         [HttpGet("getfollowers")]
         public async Task<ActionResult<List<string>>> GetFollowers([FromQuery] string ids)
         {
@@ -201,7 +201,7 @@ namespace BlogApp1.Server.Controllers
         }
 
 
-        // ✅ POST: api/admin/getfollowing
+        // POST: api/admin/getfollowing
         [HttpGet("getfollowing")]
         public async Task<ActionResult<List<string>>> GetFollowing([FromQuery] string ids)
         {
@@ -349,7 +349,7 @@ namespace BlogApp1.Server.Controllers
         }
 
 
-        // ✅ 2. Get single comment by CommentUid
+        // 2. Get single comment by CommentUid
         [HttpGet("getcomment/uid/{commentUid}")]
         public async Task<IActionResult> GetCommentById(Guid commentUid)
         {
@@ -386,8 +386,7 @@ namespace BlogApp1.Server.Controllers
             }
         }
 
-
-        // ✅ 3. Update comment by CommentUid
+        // 3. Update comment by CommentUid
         [HttpPut("updatecomment")]
         public async Task<IActionResult> UpdateComment([FromBody] CommentDto updatedComment)
         {
@@ -469,7 +468,7 @@ namespace BlogApp1.Server.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error deleting comment: {ex.Message}");
+                Console.WriteLine($" Error deleting comment: {ex.Message}");
                 return StatusCode(500, "An error occurred while deleting the comment.");
             }
         }
