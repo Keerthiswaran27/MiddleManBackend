@@ -144,7 +144,7 @@ Follow these strict rules:
         public string Audience { get; set; } = "";
         public string Tone { get; set; } = "";
         public string Length { get; set; } = "";
-        public string CustomPrompt { get; set; } = ""; // ✅ replaced keywords
+        public string CustomPrompt { get; set; } = ""; 
         public bool IncludeImage { get; set; }
     }
 
