@@ -12,8 +12,6 @@ namespace BlogApp1.Server.Controllers
     public class AdminBlogsController : ControllerBase
     {
         private readonly Client _supabase;
-
-        // ✅ Constructor with config-based initialization
         public AdminBlogsController(IConfiguration config)
         {
             var supabaseUrl = config["Supabase:Url"];
@@ -22,7 +20,6 @@ namespace BlogApp1.Server.Controllers
             _supabase = new Client(supabaseUrl, supabaseKey);
         }
 
-        // ✅ Get all blogs (with optional filters later if needed)
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BlogDto>>> GetAllBlogs()
         {
@@ -52,7 +49,7 @@ namespace BlogApp1.Server.Controllers
             return Ok(blogs);
         }
 
-        // ✅ Get single blog by Id
+        //  Get single blog by Id
         [HttpGet("{id}")]
         public async Task<ActionResult<BlogDto>> GetBlogById(int id)
         {
@@ -82,7 +79,7 @@ namespace BlogApp1.Server.Controllers
             });
         }
 
-        // ✅ Delete a blog by Id
+        // Delete a blog by Id
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBlog(int id)
         {
